@@ -12,7 +12,7 @@ def get_links(paths):
     links = []
     for path in paths:
         name, _ = os.path.splitext(path)
-        links.append(f'<a href="/{path}">{name}</a>')
+        links.append(f'<a href="/wasm-fuzzing-demo/{path}">{name}</a>')
     return links
 
 def main():
