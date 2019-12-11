@@ -1563,8 +1563,8 @@ function abort(what) {
   }
 
   what += '';
-  out(what);
-  err(what);
+  // out(what);
+  // err(what);
 
   ABORT = true;
   EXITSTATUS = 1;
@@ -5478,7 +5478,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
             if (e instanceof ExitStatus) {
               return;
             } else {
-              if (e && typeof e === 'object' && e.stack) err('exception thrown: ' + [e, e.stack]);
+              // if (e && typeof e === 'object' && e.stack) err('exception thrown: ' + [e, e.stack]);
               throw e;
             }
           }
@@ -6512,7 +6512,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   function _sigaction(signum, act, oldact) {
       //int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
-      err('Calling stub instead of sigaction()');
+      // err('Calling stub instead of sigaction()');
       return 0;
     }
 
@@ -7837,7 +7837,7 @@ function callMain(args) {
       if (e && typeof e === 'object' && e.stack) {
         toLog = [e, e.stack];
       }
-      err('exception thrown: ' + toLog);
+      // err('exception thrown: ' + toLog);
       quit_(1, e);
     }
   } finally {
@@ -7951,7 +7951,7 @@ function exit(status, implicit) {
   if (noExitRuntime) {
     // if exit() was called, we may warn the user if the runtime isn't actually being shut down
     if (!implicit) {
-      err('program exited (with status: ' + status + '), but EXIT_RUNTIME is not set, so halting execution but not exiting the runtime or preventing further async execution (build with EXIT_RUNTIME=1, if you want a true shutdown)');
+      // err('program exited (with status: ' + status + '), but EXIT_RUNTIME is not set, so halting execution but not exiting the runtime or preventing further async execution (build with EXIT_RUNTIME=1, if you want a true shutdown)');
     }
   } else {
 
