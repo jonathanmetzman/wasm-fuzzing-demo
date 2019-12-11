@@ -15,7 +15,7 @@
       div.emscripten { text-align: center; }      
       div.emscripten_border { border: 1px solid black; }
       /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
-      canvas.emscripten { border: 0px none; background-color: black; }
+      canvas.emscripten { height: 0px; border: 0px none; background-color: black; }
 
       #emscripten_logo {
         display: inline-block;
@@ -80,13 +80,13 @@
         display: inline-block;
         float: right;
         vertical-align: top;
-        margin-top: 30px;
-        margin-right: 20px;
+        margin-top: 0px;
+        margin-right: 0px;
       }
 
       #output {
         width: 100%;
-        height: 200px;
+        height: 600px;
         margin: 0 auto;
         margin-top: 10px;
         border-left: 0px;
@@ -109,7 +109,7 @@
    x="0px"
    y="0px"
    width="296px" 
-   height="78px" 
+   height="0px" 
    viewBox="420 120 100 170"
    enable-background="new 0 0 900 400"
    xml:space="preserve"
@@ -1198,19 +1198,10 @@
     <div class="spinner" id='spinner'></div>
     <div class="emscripten" id="status">Downloading...</div>
 
-<span id='controls'>
-  <span><input type="checkbox" id="resize">Resize canvas</span>
-  <span><input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
-  <span><input type="button" value="Fullscreen" onclick="Module.requestFullscreen(document.getElementById('pointerLock').checked, 
-                                                                            document.getElementById('resize').checked)">
-  </span>
-</span>
-
     <div class="emscripten">
       <progress value="0" max="100" id="progress" hidden=1></progress>
     </div>
 
-    
     <div class="emscripten_border">
       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
     </div>
