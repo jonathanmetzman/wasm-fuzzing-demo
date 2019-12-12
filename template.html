@@ -88,10 +88,12 @@
           throw "No File found";
       }
       function downloadFileArray(name, arr) {
-          var link = document.createElement('a');
-          link.href = window.URL.createObjectURL(new Blob([arr], {type: "application/octet-stream"}));
-          link.download = name;
-          link.click();
+          var downloadLink = document.createElement('a');
+          downloadLink.download = name;
+          var contentType = "application/octet-stream";
+          var downloadBlob = new Blob([arr], {type: contentType});
+          downloadLink.href = window.URL.createObjectURL(downloadBlob);
+          downloadLink.click();
       };
       
       // END MY CODE
