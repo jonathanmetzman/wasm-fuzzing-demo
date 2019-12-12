@@ -1206,8 +1206,28 @@
       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
     </div>
     <textarea id="output" rows="8"></textarea>
-
+    <button type="button" onclick="downloadCrash()">Download Crash</button>
     <script type='text/javascript'>
+      function downloadCrash() {
+          var rootDir = '/';
+          var subdirs = FS.readdir(rootDir);
+          for (var idx = 0; idx < subdirs.length; idx++) {
+              var filename = subdirs[idx];
+              if (!filename.startsWith('crash-')) {
+                  continue;
+              }
+              var fileArr = FS.readFile(FS.joinPath([rootDir, filename]));
+              downloadFileArray(filename, fileArr);
+              return;
+          }
+          throw "No File found";
+      }
+      function downloadFileArray(name, arr) {
+          var link = document.createElement('a');
+          link.href = window.URL.createObjectURL(new Blob([arr], {type: "application/octet-stream"}));
+          link.download = name;
+          link.click();
+      };
       var statusElement = document.getElementById('status');
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
