@@ -1,6 +1,6 @@
 # Demos From My Talk on Fuzzing Native Code in Web Browsers using WASM.
 
-This repo contains demos and examples from the talk (slides coming soon!) I gave on fuzzing C/C++ programs in-browser with libFuzzer using [WebAssembly](https://webassembly.org/).
+This repo contains demos and examples from the talk ([Talk slides](meetup-Fuzzing-Native-Applications-in-Browsers-With-WASM.pdf)) I gave on fuzzing C/C++ programs in-browser with libFuzzer using [WebAssembly](https://webassembly.org/).
 
 It contains [demos of in-browser fuzzing](https://jonathanmetzman.github.io/wasm-fuzzing-demo/index.html)
 as well as some tools to help users build libFuzzer targets for WASM themselves.
@@ -11,7 +11,7 @@ Note that this is not at all about fuzzing the WASM runtime. It is about fuzzing
 
 I have made a docker image to make building fuzz targets easier since the version of clang currently (12/14/2019) shipped by emscripten
 crashes when libFuzzer's coverage instrumentation is used. The docker image builds clang, downloads/installs emscripten
-and then builds libFuzzer (targeting WASM). 
+and then builds libFuzzer (targeting WASM).
 From the image you can build whatever program you want by using the compiler flag `-fsanitize-coverage=inline-8bit-counters` and then linking against libFuzzer. See the docs on [emscripten.org](https://emscripten.org/) for more info on building projects to run in the WASM VM.
 Follow the steps in the section to build the SQLite fuzzer. This should be a good starting point for building other projects yourself.
 
