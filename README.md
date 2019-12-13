@@ -23,7 +23,7 @@ Run the following commands from the root of this repository.
 
 1. `docker build -f Dockerfile -t gcr.io/libfuzzer-wasm .`
 
-2. `docker run -v $PWD/out:/out -it gcr.io/libfuzzer-wasm # Do this from the root of this repo`
+2. `docker run -v $PWD/out:/out -it gcr.io/libfuzzer-wasm`
 
 3. `bash /src/compile_sqlite.sh # Run this inside of the docker image`
 
@@ -33,3 +33,8 @@ Run the following commands from the root of this repository.
    `cd out && python -m SimpleHTTPServer`
 
 6. Open dev tools console in your browser and then go to localhost:8000/sqlite.html
+
+# FAQ
+## Why does the fuzzer I built write output only to the console and not the webpage (as the demos do)?
+Writing to the webpage (as I cover in the talk) requries making an invasive change to libFuzzer that also hurts performance
+significantly (~10-20X, though I may have implemented it badly). Therefore I didn't include this when I added basic support for emscripten to libFuzzer.
